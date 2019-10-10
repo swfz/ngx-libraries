@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ngx-libraries';
+
+  onFilteredKeyup(event: string) {
+    console.log('filtered keyup event');
+    console.log(event);
+  }
 }

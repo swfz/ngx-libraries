@@ -1,15 +1,60 @@
-import {Directive, HostListener} from '@angular/core';
+import {Directive, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
+import {interval, Observable, Subject} from "rxjs";
+import {distinctUntilChanged, filter, map, pairwise, withLatestFrom} from "rxjs/operators";
+
+export interface InputText {
+  value: string;
+}
+export type IndexedInputText = [number, InputText];
+export type TwoIndexAndText = [IndexedInputText, IndexedInputText];
+export type BeforeAfterInputText = [string, string];
 
 @Directive({
   selector: '[libFilterKeyupEvents]'
 })
-export class FilterKeyupEventsDirective {
+export class FilterKeyupEventsDirective implements OnInit {
 
-  constructor() {
+  private inputTexts$!: Subject<InputText>;
+  private interval$!: Observable<number>;
+
+  @Input()
+  intervalMs?: number;
+
+  @Output() filteredKeyup: EventEmitter<string> = new EventEmitter<string>();
+
+  constructor() { }
+
+  ngOnInit(): void {
+    console.log(this.intervalMs);
+    this.interval$ =  interval(this.intervalMs);
+    this.inputTexts$ = new Subject<InputText>();
+
+    this.interval$.pipe(
+      withLatestFrom(this.inputTexts$),
+      pairwise(),
+      map(this.deleteIndex),
+      filter(this.sillenceValue),
+      distinctUntilChanged(this.distinct)
+    ).subscribe(p => {
+      console.log(p);
+      this.filteredKeyup.emit(p[0]);
+    });
   }
 
   @HostListener('keyup', ['$event.target.value'])
   onKeyUp(value: string) {
-    console.log(value);
+    this.inputTexts$.next({value: value});
+  }
+
+  private deleteIndex(v: TwoIndexAndText): BeforeAfterInputText {
+    return [v[0][1].value, v[1][1].value];
+  }
+
+  private sillenceValue(v: BeforeAfterInputText) {
+    return v[0] === v[1];
+  }
+
+  private distinct(a: BeforeAfterInputText, b: BeforeAfterInputText) {
+    return a[1] === b[1];
   }
 }
