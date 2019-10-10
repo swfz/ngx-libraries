@@ -124,6 +124,41 @@
           }
         }
       }
+    },
+    "filter-keyup-events": {
+      "projectType": "library",
+      "root": "projects/filter-keyup-events",
+      "sourceRoot": "projects/filter-keyup-events/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/filter-keyup-events/tsconfig.lib.json",
+            "project": "projects/filter-keyup-events/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/filter-keyup-events/src/test.ts",
+            "tsConfig": "projects/filter-keyup-events/tsconfig.spec.json",
+            "karmaConfig": "projects/filter-keyup-events/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/filter-keyup-events/tsconfig.lib.json",
+              "projects/filter-keyup-events/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "ngx-libraries"
 }
