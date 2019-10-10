@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { FilterKeyupEventsComponent } from './filter-keyup-events.component';
+import { FilterKeyupEventsDirective } from './directives/filter-keyup-events.directive';
 
 
 
 @NgModule({
-  declarations: [FilterKeyupEventsComponent],
+  declarations: [FilterKeyupEventsComponent, FilterKeyupEventsDirective],
   imports: [
   ],
-  exports: [FilterKeyupEventsComponent]
+  exports: [FilterKeyupEventsComponent, FilterKeyupEventsDirective]
 })
 export class FilterKeyupEventsModule { }

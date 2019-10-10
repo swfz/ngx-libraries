@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {FilterKeyupEventsModule} from "../../projects/filter-keyup-events/src/lib/filter-keyup-events.module";
 
 @NgModule({
   declarations: [
@@ -10,6 +11,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    FilterKeyupEventsModule,
     AppRoutingModule
   ],
   providers: [],
