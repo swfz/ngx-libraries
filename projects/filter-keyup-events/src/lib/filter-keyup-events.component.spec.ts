@@ -8,9 +8,8 @@ describe('FilterKeyupEventsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FilterKeyupEventsComponent ]
-    })
-    .compileComponents();
+      declarations: [FilterKeyupEventsComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

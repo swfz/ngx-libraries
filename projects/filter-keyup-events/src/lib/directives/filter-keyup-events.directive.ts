@@ -1,6 +1,19 @@
-import {Directive, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
-import {interval, Observable, Subject} from "rxjs";
-import {distinctUntilChanged, filter, map, pairwise, withLatestFrom} from "rxjs/operators";
+import {
+  Directive,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnInit,
+  Output
+} from '@angular/core';
+import { interval, Observable, Subject } from 'rxjs';
+import {
+  distinctUntilChanged,
+  filter,
+  map,
+  pairwise,
+  withLatestFrom
+} from 'rxjs/operators';
 
 export interface InputText {
   value: string;
@@ -13,7 +26,6 @@ export type BeforeAfterInputText = [string, string];
   selector: '[libFilterKeyupEvents]'
 })
 export class FilterKeyupEventsDirective implements OnInit {
-
   private inputTexts$!: Subject<InputText>;
   private interval$!: Observable<number>;
 
@@ -22,28 +34,30 @@ export class FilterKeyupEventsDirective implements OnInit {
 
   @Output() filteredKeyup: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     console.log(this.intervalMs);
-    this.interval$ =  interval(this.intervalMs);
+    this.interval$ = interval(this.intervalMs);
     this.inputTexts$ = new Subject<InputText>();
 
-    this.interval$.pipe(
-      withLatestFrom(this.inputTexts$),
-      pairwise(),
-      map(this.deleteIndex),
-      filter(this.sillenceValue),
-      distinctUntilChanged(this.distinct)
-    ).subscribe(p => {
-      console.log(p);
-      this.filteredKeyup.emit(p[0]);
-    });
+    this.interval$
+      .pipe(
+        withLatestFrom(this.inputTexts$),
+        pairwise(),
+        map(this.deleteIndex),
+        filter(this.sillenceValue),
+        distinctUntilChanged(this.distinct)
+      )
+      .subscribe(p => {
+        console.log(p);
+        this.filteredKeyup.emit(p[0]);
+      });
   }
 
   @HostListener('keyup', ['$event.target.value'])
   onKeyUp(value: string) {
-    this.inputTexts$.next({value: value});
+    this.inputTexts$.next({ value });
   }
 
   private deleteIndex(v: TwoIndexAndText): BeforeAfterInputText {

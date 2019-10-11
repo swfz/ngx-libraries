@@ -6,7 +6,9 @@ describe('FilterKeyupEventsService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: FilterKeyupEventsService = TestBed.get(FilterKeyupEventsService);
+    const service: FilterKeyupEventsService = TestBed.get(
+      FilterKeyupEventsService
+    );
     expect(service).toBeTruthy();
   });
 });
