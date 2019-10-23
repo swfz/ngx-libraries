@@ -1,12 +1,13 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { FilterKeyupEventsDirective } from '../../projects/filter-keyup-events/src/lib/directives/filter-keyup-events.directive';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [AppComponent]
+      declarations: [AppComponent, FilterKeyupEventsDirective]
     }).compileComponents();
   }));
 
