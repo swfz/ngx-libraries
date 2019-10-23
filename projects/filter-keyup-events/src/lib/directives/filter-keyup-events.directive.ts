@@ -28,6 +28,7 @@ export type BeforeAfterInputText = [string, string];
 export class FilterKeyupEventsDirective implements OnInit {
   private inputTexts$!: Subject<InputText>;
   private interval$!: Observable<number>;
+  filterText$: Observable<[string, string]>;
 
   @Input()
   intervalMs?: number;
@@ -40,24 +41,30 @@ export class FilterKeyupEventsDirective implements OnInit {
     console.log(this.intervalMs);
     this.interval$ = interval(this.intervalMs);
     this.inputTexts$ = new Subject<InputText>();
+    this.filterText$ = this.createFilterTextObservable(
+      this.interval$,
+      this.inputTexts$
+    );
 
-    this.interval$
-      .pipe(
-        withLatestFrom(this.inputTexts$),
-        pairwise(),
-        map(this.deleteIndex),
-        filter(this.sillenceValue),
-        distinctUntilChanged(this.distinct)
-      )
-      .subscribe(p => {
-        console.log(p);
-        this.filteredKeyup.emit(p[0]);
-      });
+    this.filterText$.subscribe(p => {
+      console.log(p);
+      this.filteredKeyup.emit(p[0]);
+    });
   }
 
   @HostListener('keyup', ['$event.target.value'])
   onKeyUp(value: string) {
     this.inputTexts$.next({ value });
+  }
+
+  createFilterTextObservable(intervalStream, inputTextStream) {
+    return intervalStream.pipe(
+      withLatestFrom(inputTextStream),
+      pairwise(),
+      map(this.deleteIndex),
+      filter(this.sillenceValue),
+      distinctUntilChanged(this.distinct)
+    );
   }
 
   private deleteIndex(v: TwoIndexAndText): BeforeAfterInputText {
