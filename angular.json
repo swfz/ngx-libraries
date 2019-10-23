@@ -159,6 +159,41 @@
           }
         }
       }
+    },
+    "hoge": {
+      "projectType": "library",
+      "root": "projects/hoge",
+      "sourceRoot": "projects/hoge/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/hoge/tsconfig.lib.json",
+            "project": "projects/hoge/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/hoge/src/test.ts",
+            "tsConfig": "projects/hoge/tsconfig.spec.json",
+            "karmaConfig": "projects/hoge/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/hoge/tsconfig.lib.json",
+              "projects/hoge/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "ngx-libraries"
 }
