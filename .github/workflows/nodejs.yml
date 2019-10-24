@@ -91,7 +91,7 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
-    needs: [build, lint, prettier]
+    needs: [build-app, build-lib, lint, prettier]
 
     strategy:
       matrix:
