@@ -47,7 +47,6 @@ export class FilterKeyupEventsDirective implements OnInit {
     );
 
     this.filterText$.subscribe(p => {
-      console.log(p);
       this.filteredKeyup.emit(p[0]);
     });
   }
