@@ -7,7 +7,7 @@
     "build": "ng build",
     "build:app": "ng build --prod --aot",
     "build:lib": "ng build --project filter-keyup-events",
-    "test": "jest",
+    "test": "npm run test:lib && npm run test:app",
     "test:lib": "jest --config ./jest.lib.config.js",
     "test:app": "jest --config ./jest.app.config.js",
     "lint": "ng lint",
