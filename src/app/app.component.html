@@ -1,23 +1,14 @@
-<router-outlet></router-outlet>
-
 <div class="content">
   <span>{{ title }} app is running!</span>
 </div>
 
-<h2>filter-keyup-events</h2>
-
-<div>
-  keyup event when input is completed when there is no input for 0.5 seconds
-</div>
-<input
-  libFilterKeyupEvents
-  [intervalMs]="500"
-  (filteredKeyup)="onFilteredKeyup($event)"
-  type="text"
-/>
-
 <dl>
-  <li *ngFor="let event of events">
-    {{ event }}
+  <li>
+    <a [routerLink]="'/'">home</a>
+  </li>
+  <li>
+    <a [routerLink]="'/filter-keyup-events'">filter-keyup-events</a>
   </li>
 </dl>
+
+<router-outlet></router-outlet>
