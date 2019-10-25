@@ -6,6 +6,7 @@ Angular Libraries Collection
 
 ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/swfz/ngx-libraries.svg?color=blue&style=popout)
 
+[demo](https://swfz.github.io/ngx-libraries)
 
 ## filter-keyup-events
 
