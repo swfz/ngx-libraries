@@ -4,6 +4,8 @@ Angular directive that recieves an event when there is no keyup input for a cert
 
 using ng library
 
+[demo](https://swfz.github.io/ngx-libraries/filter-keyup-events)
+
 ## Usage
 
 ```
