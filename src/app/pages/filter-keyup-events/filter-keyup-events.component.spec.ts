@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FilterKeyupEventsComponent } from './filter-keyup-events.component';
+import { FilterKeyupEventsDirective } from '../../../../projects/filter-keyup-events/src/lib/directives/filter-keyup-events.directive';
 
 describe('FilterKeyupEventsComponent', () => {
   let component: FilterKeyupEventsComponent;
@@ -8,7 +9,7 @@ describe('FilterKeyupEventsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [FilterKeyupEventsComponent]
+      declarations: [FilterKeyupEventsComponent, FilterKeyupEventsDirective]
     }).compileComponents();
   }));
 
