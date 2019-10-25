@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "npm run build:app && npm run build:lib",
     "build:app": "ng build --prod --aot",
     "build:lib": "ng build --project filter-keyup-events",
     "test": "npm run test:lib && npm run test:app",
@@ -13,8 +13,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "prettier": "prettier --single-quote --write './**/*.{scss,ts,html}'",
-    "prettier:check": "prettier --single-quote --check './**/*.{scss,ts,html}'",
-    "test:watch": "jest --watch"
+    "prettier:check": "prettier --single-quote --check './**/*.{scss,ts,html}'"
   },
   "private": true,
   "dependencies": {
