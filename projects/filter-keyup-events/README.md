@@ -1,24 +1,57 @@
 # FilterKeyupEvents
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.9.
+Angular directive that recieves an event when there is no keyup input for a certain period of time.
 
-## Code scaffolding
+using ng library
 
-Run `ng generate component component-name --project filter-keyup-events` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project filter-keyup-events`.
-> Note: Don't forget to add `--project filter-keyup-events` or else it will be added to the default project in your `angular.json` file. 
+## Usage
 
-## Build
+```
+npm install -S @swfz/ngx-filter-keyup-events
+```
 
-Run `ng build filter-keyup-events` to build the project. The build artifacts will be stored in the `dist/` directory.
+And import into your NgModule
 
-## Publishing
 
-After building your library with `ng build filter-keyup-events`, go to the dist folder `cd dist/filter-keyup-events` and run `npm publish`.
+```
+import {NgModule} from '@angular/core';
+import {FilterKeyupEventsModule} from '@swfz/ngx-filter-keyup-events';
 
-## Running unit tests
+@NgModule({
+  imports: [FilterKeyupEventsModule],
+})
+```
 
-Run `ng test filter-keyup-events` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- your.component.html
 
-## Further help
+```
+<input
+  libFilterKeyupEvents
+  [intervalMs]="500"
+  (filteredKeyup)="onFilteredKeyup($event)"
+  type="text"
+/>
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- your.component.ts
+
+```
+  onFilteredKeyup(event: string) {
+    console.log(event);
+  }
+```
+
+
+## Reference
+
+### inputs
+- intervalMs
+    - type: number
+    - threshold for how many milliseconds of input are not fired
+
+
+### outputs
+- filteredKeyup
+    - filtered input value
+
+
