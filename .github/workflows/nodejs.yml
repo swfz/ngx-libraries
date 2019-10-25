@@ -19,7 +19,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: npm install, build, and test
         run: |
-          npm install
+          npm ci
           npm run build:app
           npm run test:app
         env:
@@ -41,7 +41,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: npm install, build, and test
       run: |
-        npm install
+        npm ci
         npm run build:lib
         npm run test:lib
       env:
@@ -63,7 +63,7 @@ jobs:
 
       - name: npm install, prettier
         run: |
-          npm install
+          npm ci
           npm run prettier:check
         env:
           CI: true
@@ -84,32 +84,8 @@ jobs:
 
       - name: npm install, lint
         run: |
-          npm install
+          npm ci
           npm run lint
         env:
           CI: true
 
-  publish:
-    runs-on: ubuntu-latest
-    needs: [build-app, build-lib, lint, prettier]
-
-    strategy:
-      matrix:
-        node-version: [12.x]
-
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/bin/filter@master
-        with:
-          args: branch master
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: npm install, npm publish
-        run: |
-          npm install
-          echo 'publish'
-        env:
-          CI: true
