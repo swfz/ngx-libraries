@@ -38,7 +38,6 @@ export class FilterKeyupEventsDirective implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.intervalMs);
     this.interval$ = interval(this.intervalMs);
     this.inputTexts$ = new Subject<InputText>();
     this.filterText$ = this.createFilterTextObservable(
