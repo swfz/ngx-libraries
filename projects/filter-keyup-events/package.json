@@ -24,6 +24,8 @@
       "@src/(.*)": "<rootDir>/src/src/$1",
       "@state/(.*)": "<rootDir>/src/app/state/$1"
     },
+    "collectCoverage": true,
+    "collectCoverageFrom": ["src/lib/**/*.ts"],
     "globals": {
       "ts-jest": {
         "tsConfig": "hoge/tsconfig.spec.json",
