@@ -26,6 +26,6 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: |
         npm ci
-        npm run build:lib
+        npm run build
         cd projects/filter-keyup-events
         npm publish
