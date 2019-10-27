@@ -1,8 +1,9 @@
 name: npm package
 
-on:
-  release:
-    types: [created,edited]
+#on:
+#  release:
+#    types: [created,edited]
+on: [release]
 
 jobs:
   publish-npm:
