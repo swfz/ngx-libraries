@@ -22,10 +22,10 @@ jobs:
       - name: build and deploy
         run: |
           npm ci
-          npm run deploy --repo=https://github.com/swfz/ngx-libraries.git --name="$GITHUB_USERNAME" --email="$GITHUB_EMAIL"
+          npm run deploy -- --repo=https://github.com/swfz/ngx-libraries.git --name="$GITHUB_USERNAME" --email="$GITHUB_EMAIL"
         env:
           CI: true
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GH_TOKEN: ${{secrets.GITHUB_PERSONAL_TOKEN}}
           GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
           GITHUB_EMAIL: ${{ secrets.GITHUB_EMAIL }}
 
