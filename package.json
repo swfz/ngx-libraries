@@ -10,7 +10,7 @@
     "test": "npm run test:lib && npm run test:app",
     "test:lib": "jest --config ./jest.lib.config.js",
     "test:app": "jest --config ./jest.app.config.js",
-    "deploy": "ng deploy",
+    "deploy": "ng deploy --base-href=/ngx-libraries/ --message='[skip ci] deploy to GitHub Pages'",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "prettier": "prettier --single-quote --write './**/*.{scss,ts,html}'",

@@ -126,8 +126,6 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "base-href": "/ngx-libraries/",
-            "message": "[skip ci] deploy to GitHub Pages"
           }
         }
       }
