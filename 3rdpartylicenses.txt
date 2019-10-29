@@ -36,6 +36,7 @@ MIT
 MIT
 
 @swfz/ngx-filter-keyup-events
+MIT
 
 core-js
 MIT
