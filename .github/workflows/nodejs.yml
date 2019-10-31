@@ -7,7 +7,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
+    strategy: &strategy
       matrix:
         node-version: [12.x]
 
@@ -17,6 +17,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+
       - name: npm install, build, and test
         run: |
           npm ci
@@ -30,8 +31,9 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      matrix:
-        node-version: [12.x]
+      <<: *strategy
+      # matrix:
+      #   node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v1
@@ -93,7 +95,7 @@ jobs:
 
       - name: npm install, lint
         run: |
-          npm ci
+          npm install
           npm run lint
         env:
           CI: true
