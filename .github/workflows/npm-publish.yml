@@ -14,9 +14,15 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
 
+      - name: cache
+        uses: actions/cache@preview
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles(format('{0}{1}', github.workspace, '/package.json')) }}
+
       - name: npm install, build, publish
         run: |
-          npm ci
+          npm install
           npm run build:lib
           cd projects/filter-keyup-events
           npm publish
