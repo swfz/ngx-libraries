@@ -7,7 +7,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy: &strategy
+    strategy:
       matrix:
         node-version: [12.x]
 
@@ -31,9 +31,8 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      <<: *strategy
-      # matrix:
-      #   node-version: [12.x]
+      matrix:
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v1
@@ -68,7 +67,7 @@ jobs:
         uses: actions/cache@preview
         with:
           path: node_modules
-          key: ${{ runner.os }}-node
+          key: ${{ runner.os }}-node-${{ hashFiles('package.json') }}
 
       - run: ls -al node_modules
 
