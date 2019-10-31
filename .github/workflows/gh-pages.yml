@@ -19,9 +19,16 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+
+      - name: cache
+        uses: actions/cache@preview
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles(format('{0}{1}', github.workspace, '/package.json')) }}
+
       - name: build and deploy
         run: |
-          npm ci
+          npm install
           npm run deploy -- --repo=https://github.com/swfz/ngx-libraries.git --name="$GITHUB_USERNAME" --email="$GITHUB_EMAIL"
         env:
           CI: true
