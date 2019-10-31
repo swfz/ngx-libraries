@@ -72,7 +72,7 @@ jobs:
 
       - name: npm install, prettier
         run: |
-          npm ci
+          npm install
           npm run prettier:check
         env:
           CI: true
