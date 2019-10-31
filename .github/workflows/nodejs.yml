@@ -61,6 +61,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: cache
+        uses: actions/cache@preview
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package.json') }}
+
       - name: npm install, prettier
         run: |
           npm ci
