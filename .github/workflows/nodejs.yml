@@ -63,14 +63,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - run: ls -al
       - name: cache
         uses: actions/cache@preview
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles(format('{0}{1}', github.workspace, '/package.json')) }}
-
-      - run: ls -al node_modules
 
       - name: npm install, prettier
         run: |
