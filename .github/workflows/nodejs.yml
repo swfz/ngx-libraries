@@ -31,64 +31,6 @@ jobs:
         env:
           CI: true
 
-  build-app:
-
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x]
-
-    steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: cache
-        uses: actions/cache@preview
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles(format('{0}{1}', github.workspace, '/package.json')) }}
-
-      - name: npm install, build, and test
-        run: |
-          npm install
-          npm run build:app
-          npm run test:app
-        env:
-          CI: true
-
-  build-lib:
-
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x]
-
-    steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: cache
-        uses: actions/cache@preview
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles(format('{0}{1}', github.workspace, '/package.json')) }}
-
-      - name: npm install, build, and test
-        run: |
-          npm install
-          npm run build:lib
-          npm run test:lib
-        env:
-          CI: true
-
   prettier:
     runs-on: ubuntu-latest
 
