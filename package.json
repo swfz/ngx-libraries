@@ -14,8 +14,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "prettier": "prettier --single-quote --write './**/*.{scss,ts,html}'",
-    "prettier:check": "prettier --single-quote --check './**/*.{scss,ts,html}'",
-    "commitmsg": "commitlint -e $GIT_PARAMS"
+    "prettier:check": "prettier --single-quote --check './**/*.{scss,ts,html}'"
   },
   "private": true,
   "dependencies": {
@@ -87,6 +86,11 @@
           "jest-preset-angular/InlineHtmlStripStylesTransformer.js"
         ]
       }
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
 }
