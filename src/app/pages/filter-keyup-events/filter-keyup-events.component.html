@@ -3,15 +3,20 @@
 <div>
   keyup event when input is completed when there is no input for 0.5 seconds
 </div>
+
+<div>
+  intervalMs: {{ intervalMs }}
+</div>
+
 <input
   libFilterKeyupEvents
-  [intervalMs]="500"
+  [intervalMs]="intervalMs"
   (filteredKeyup)="onFilteredKeyup($event)"
   type="text"
 />
 
 <dl>
   <li *ngFor="let event of events">
-    {{ event }}
+    time: {{ event.time }} | {{ event.value }}
   </li>
 </dl>
