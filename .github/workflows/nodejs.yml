@@ -96,7 +96,8 @@ jobs:
         uses: 8398a7/action-slack@v2
         with:
           status: ${{ job.status }}
-          fields: repo,message,action,author,eventName,workflow,ref
+          author_name: ${{ jon.name }}
+          fields: repo,message,action,author,workflow,ref
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
