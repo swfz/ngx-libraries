@@ -20,6 +20,6 @@ export class FilterKeyupEventsComponent implements OnInit {
 
   onFilteredKeyup(event: string) {
     console.log('filtered keyup event');
-    this.events.push({value: event, time: (new Date()).getTime().toString() });
+    this.events.push({ value: event, time: new Date().getTime().toString() });
   }
 }
