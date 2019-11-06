@@ -86,3 +86,20 @@ jobs:
         env:
           CI: true
 
+  notifycation:
+    name: slack notification
+    runs-on: ubuntu-latest
+    needs: [lint,prettier,build]
+    steps:
+      - uses: actions/checkout@v1
+      - name: slack notification
+        uses: 8398a7/action-slack@v2
+        with:
+          status: ${{ job.status }}
+          author_name: ${{ job.name }}
+          fields: repo,message,action,author,workflow,ref
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always()
+
