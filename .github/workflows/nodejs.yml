@@ -96,9 +96,7 @@ jobs:
         uses: 8398a7/action-slack@v2
         with:
           status: ${{ job.status }}
-          username: GitHubActions
-          icon_emoji: ':octcat:'
-          channel: ${{ secrets.SLACK_CHANNEL }}
+          fields: repo,message,action,author,eventName,workflow,ref
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
