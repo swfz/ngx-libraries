@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
+interface EventLog {
+  event: string;
+  time: number;
+}
 @Component({
   selector: 'app-filter-keyup-events',
   templateUrl: './filter-keyup-events.component.html',
   styleUrls: ['./filter-keyup-events.component.scss']
 })
 export class FilterKeyupEventsComponent implements OnInit {
-  events: string[] = [];
+  eventLogs: EventLog[] = [];
 
   constructor() {}
 
@@ -14,6 +18,6 @@ export class FilterKeyupEventsComponent implements OnInit {
 
   onFilteredKeyup(event: string) {
     console.log('filtered keyup event');
-    this.events.push(event);
+    this.eventLogs.push({ event, time: Date.now() });
   }
 }

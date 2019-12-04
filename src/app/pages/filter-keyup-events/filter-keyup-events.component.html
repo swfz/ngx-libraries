@@ -11,7 +11,5 @@
 />
 
 <dl>
-  <li *ngFor="let event of events">
-    {{ event }}
-  </li>
+  <li *ngFor="let log of eventLogs">{{ log.time }}: {{ log.event }}</li>
 </dl>
