@@ -1,4 +1,5 @@
 import 'jest-preset-angular';
+import 'jest-allure/dist/setup';
 
 /* global mocks for jsdom */
 const mock = () => {
