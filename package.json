@@ -43,7 +43,7 @@
     "@types/gtag.js": "0.0.3",
     "@types/jest": "24.0.23",
     "@types/node": "~12.12.14",
-    "codelyzer": "^5.2.0",
+    "codelyzer": "^5.2.1",
     "husky": "^3.1.0",
     "jest": "24.9.0",
     "jest-allure": "^0.1.1",
