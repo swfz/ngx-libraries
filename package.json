@@ -38,7 +38,7 @@
     "@angular/cli": "~8.3.21",
     "@angular/compiler-cli": "~8.2.9",
     "@angular/language-service": "~9.1.11",
-    "@commitlint/cli": "^8.3.5",
+    "@commitlint/cli": "^16.0.1",
     "@commitlint/config-conventional": "^8.3.4",
     "@types/gtag.js": "0.0.3",
     "@types/jest": "25.1.2",
